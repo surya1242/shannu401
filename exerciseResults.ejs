@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Results</title>
+    <style>
+        /* Global reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0; /* Light gray background */
+  color: #333; /* Dark gray text */
+}
+
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff; /* White background */
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 5px;
+}
+
+h1 {
+  text-align: center;
+  color: #333; /* Dark gray heading */
+  margin-bottom: 20px;
+}
+
+form {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #666; /* Gray label text */
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  width: calc(100% - 100px);
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #ff8c00; /* Orange button */
+  color: #fff; /* White text */
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #ff6f00; /* Darker orange on hover */
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #f9f9f9; /* Light gray background for each exercise */
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+p {
+  margin: 5px 0;
+  color: #555; /* Dark gray paragraph text */
+}
+
+strong {
+  font-weight: bold;
+  color: #333; /* Dark gray strong text */
+}
+
+    </style> <!-- Adjust path to your CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h1>Exercise Results</h1>
+
+        <form action="/exercises" method="GET">
+            <label for="muscle">Enter muscle name:</label>
+            <input type="text" id="muscle" name="muscle" value="<%= muscle %>" required>
+            <button type="submit">Search</button>
+        </form>
+
+        <% if (details) { %>
+            <h2>Exercises for <%= muscle %>:</h2>
+            <ul>
+                <% details.forEach(detail => { %>
+                    <li>
+                        <p><strong>Name:</strong> <%= detail.name %></p>
+                        <p><strong>Type:</strong> <%= detail.type %></p>
+                        <p><strong>Muscle:</strong> <%= detail.muscle %></p>
+                        <p><strong>Equipment:</strong> <%= detail.equipment %></p>
+                        <p><strong>Difficulty:</strong> <%= detail.difficulty %></p>
+                        <p><strong>Instructions:</strong> <%= detail.instructions %></p>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } %>
+    </div>
+</body>
+</html>
